@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>Ultimate to-do list</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      new Vue({
+			  el: '#root',
+        template: `
+          <div id="tak">
+            <p>Add element - string:</p>
+            <input v-model="element">
+            <button v-on:click="addElement">ADD</button>
+            <p>Delete element - type index:</p>
+            <input v-model="number"><button v-on:click="deleteElement(number)">DELETE</button>
+            
+            <ul>
+              <li v-for="letter in things">{{letter}}</li>
+            </ul>
+          </div>`
+        ,
+
+        data:{
+            things:[],
+            element: '',
+            number: ''
+        },
+
+        methods:{
+          addElement: function(){
+            return this.things.push(this.element)},
+          deleteElement: function(n){
+            return this.things.splice((n-1),1)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
